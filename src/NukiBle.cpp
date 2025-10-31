@@ -406,6 +406,14 @@ void NukiBle::setConnectTimeout(uint8_t timeout) {
   connectTimeoutSec = timeout;
 }
 
+void NukiBle::setGeneralTimeout(uint32_t timeoutMs) {
+  generalTimeoutDuration = timeoutMs;
+}
+
+void NukiBle::setCommandTimeout(uint32_t timeoutMs) {
+  commandTimeoutDuration = timeoutMs;
+}
+
 void NukiBle::setConnectRetries(uint8_t retries) {
   connectRetries = retries;
 }
@@ -591,9 +599,9 @@ Nuki::CmdResult NukiBle::retrieveKeypadEntries(const uint16_t offset, const uint
     //wait for return of Keypad Code Count (0x0044)
     while (!keypadCodeCountReceived) {
       #ifndef NUKI_64BIT_TIME
-      if (millis() - timeNow > GENERAL_TIMEOUT) {
+      if (millis() - timeNow > generalTimeoutDuration) {
       #else
-      if ((esp_timer_get_time() / 1000) - timeNow > GENERAL_TIMEOUT) {
+      if ((esp_timer_get_time() / 1000) - timeNow > generalTimeoutDuration) {
       #endif
         logMessage("Receive keypad count timeout", 2);
         disconnect();
@@ -613,9 +621,9 @@ Nuki::CmdResult NukiBle::retrieveKeypadEntries(const uint16_t offset, const uint
     #endif
     while (nrOfReceivedKeypadCodes < getKeypadEntryCount()) {
       #ifndef NUKI_64BIT_TIME
-      if (millis() - timeNow > GENERAL_TIMEOUT) {
+      if (millis() - timeNow > generalTimeoutDuration) {
       #else
-      if ((esp_timer_get_time() / 1000) - timeNow > GENERAL_TIMEOUT) {
+      if ((esp_timer_get_time() / 1000) - timeNow > generalTimeoutDuration) {
       #endif
         logMessage("Receive keypadcodes timeout", 2);
         disconnect();
