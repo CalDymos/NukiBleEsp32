@@ -40,6 +40,7 @@ enum class BatteryType : uint8_t {
   Alkali       = 0x00,
   Accumulators = 0x01,
   Lithium      = 0x02,
+  NoWarnings   = 0x03,
   Unknown      = 0xFF
 };
 
