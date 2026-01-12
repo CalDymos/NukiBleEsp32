@@ -1,4 +1,4 @@
-#pragma message(">>> USING LOCAL NukiBleEsp32@2.0.0<<<")
+#pragma message(">>> USING LOCAL NukiBleEsp32@2.6.2<<<")
 #pragma once
 /**
  * @file NukiBle.h
