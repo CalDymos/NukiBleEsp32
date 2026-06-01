@@ -446,6 +446,7 @@ class NukiLock : public Nuki::NukiBle {
      * @param requestedLogEntries list to store the returned log entries
      */
     void getLogEntries(std::list<LogEntry>* requestedLogEntries);
+    void getLogEntries(std::vector<LogEntry>* requestedLogEntries);  // overload for vector if preferred
 
     /**
      * @brief Request the lock via BLE to send the log entries

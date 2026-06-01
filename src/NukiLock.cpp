@@ -668,6 +668,11 @@ void NukiLock::getLogEntries(std::list<LogEntry>* requestedLogEntries) {
   }
 }
 
+// vector version of getLogEntries, to reduce overhead and save memory on systems without PSRAM
+void NukiLock::getLogEntries(std::vector<LogEntry>* requestedLogEntries) {
+    requestedLogEntries->assign(listOfLogEntries.begin(), listOfLogEntries.end());
+}
+
 void NukiLock::getInternalLogEntries(std::list<InternalLogEntry>* requestedInternalLogEntries) {
   requestedInternalLogEntries->clear();
 
