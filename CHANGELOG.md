@@ -1,5 +1,10 @@
 # Changelog
 
+## V2.7.0 (Unreleased)
+
+- Add overloaded function `NukiLock::getLogEntries(vector<LogEntry>*)`.
+  can be used to reduce overhead on systems without PSRAM
+
 ## V2.6.2 (Unreleased)
 
 - Improve logging level consistency and error visibility in several methods
